@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Deck {
+            Contructor() {
+                this.desk = [];
+                this.reset();
+
+            }
+            reset() {
+                this.desk = [];
+                let suits = ['Clubs', 'Hearts', 'Diamonds', 'Spades'];
+                let pips = ['Ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'Kings'];
+
+                for (let suit in suits) {
+                    for (let pip in pips) {
+                        this.deck.push(pips[pips] + "of" + suits[suit]);
+                    }
+                }
+                return this;
+            }
+
+
+
+            shuffle() {
+                let m = this.deck.length,
+                    t, i;
+                while (m) {
+                    i = Math.floor(Math.random() * m--);
+                    t = this.deck[m];
+                    this.deck[m];
+                    this.deck[m] = this.deck[i]
+                    this.deck[i] = t
+                }
+                return this;
+            }
+
+            deal() {
+                return this.deck.pop();
+            }
+
+        }
+
+        class Player {
+            contructor(name) {
+                this.name = name;
+                this.hand = [];
+            }
+            draw(deck) {
+                this.hand.push(deck.deal());
+                return this;
+
+            }
+            discard() {
+                this.hand.pop();
+                return this;
+            }
+        }
+        let deck1 = new Deck();
+        deck1.shuffle().shuffle().reset().shuffle();
+
+        let player1 = new Player('Anna');
+        player1.draw(deck1).draw(deck1)
+        console.log(player1.hand)
+    </script>
+
+</body>
+
+</html>
